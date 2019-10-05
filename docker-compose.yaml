@@ -5,39 +5,36 @@ networks:
     
 services:
   web0:
-    image: 'my_proxy:latest'
+    image: 'my_web:latest'
     container_name: web0
     ports:
       - '80:80'
       # - '8080:8080'
     entrypoint: /opt/runner.bash
-    # logging:
-    #   driver: "json-file"
-    #   options:
-    #     max-size: "10m"
-    #     max-file: "5"
     networks: 
       net:
-        aliases: 
-          - web1
+        # aliases: 
+        #   - web0
     # links:
     #   - web1
+    # depends_on:
+    #   - web1
+    stdin_open: true
+    tty: true
 
   web1:
-    image: 'my_proxy:latest'
+    image: 'my_web:latest'
     container_name: web1
     ports:
       - 81:80
-      # - 8081:8080
     entrypoint: /opt/runner.bash
-    # logging:
-    #   driver: "json-file"
-    #   options:
-    #     max-size: "10m"
-    #     max-file: "5"
     networks: 
       net:
-        aliases: 
-          - web0
+        # aliases: 
+        #   - web1
+    # depends_on:
+    #   - web0
     # links:
     #   - web0
+    stdin_open: true
+    tty: true

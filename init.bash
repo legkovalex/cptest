@@ -29,16 +29,16 @@ start() {
 check() {
 wget -q http://127.0.0.1:80
 if [ $? -eq 0 ]; then
-    echo "Online"
+    echo "First container is online"
 else
-    echo "Offline"
+    echo "First container is offline"
 fi
 
 wget -q http://127.0.0.1:81
 if [ $? -eq 0 ]; then
-    echo "Online"
+    echo "Second container is online"
 else
-    echo "Offline"
+    echo "Second container is offline"
 fi
 }
 
